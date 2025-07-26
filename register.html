@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Smart Career Path Recommender</title>
+  <style>
+    body {
+      background: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1480&q=80') center/cover no-repeat;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      width: 320px;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .error-message {
+      color: red;
+      font-size: 0.85rem;
+      display: none;
+    }
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .signin-link {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .signin-link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .signin-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+ <form id="registrationForm" class="form-container" method="POST" action="/register">
+
+    <h2>Register</h2>
+
+    <label for="fullName">Full Name</label>
+    <input type="text" id="fullName" name="fullName">
+    <div class="error-message" id="fullNameError"></div>
+
+    <label for="emailOrMobile">Email or Mobile Number</label>
+    <input type="text" id="emailOrMobile" name="emailOrMobile">
+    <div class="error-message" id="emailOrMobileError"></div>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password">
+
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" id="confirmPassword" name="confirmPassword">
+    <div class="error-message" id="confirmPasswordError"></div>
+
+    <label for="role">Role</label>
+    <select id="role" name="role">
+      <option value="">Select Role</option>
+      <option value="student">Student</option>
+      <option value="counselor">Counselor</option>
+      <option value="admin">Admin</option>
+    </select>
+
+    <button type="submit">Register</button>
+    <div class="signin-link">
+      Already have an account? <a href="/login">Login here</a>
+
+    </div>
+  </form>
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    
+      let isValid = true;
+
+      document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+
+      const fullName = document.getElementById('fullName');
+      const emailOrMobile = document.getElementById('emailOrMobile');
+      const password = document.getElementById('password');
+      const confirmPassword = document.getElementById('confirmPassword');
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const mobileRegex = /^\d{10}$/;
+
+      if (fullName.value.trim() === '') {
+        showError('fullNameError', 'Full Name cannot be empty.');
+        isValid = false;
+      }
+
+      if (!emailRegex.test(emailOrMobile.value) && !mobileRegex.test(emailOrMobile.value)) {
+        showError('emailOrMobileError', 'Enter a valid email or 10-digit mobile number.');
+        isValid = false;
+      }
+
+      if (password.value !== confirmPassword.value) {
+        showError('confirmPasswordError', 'Passwords do not match.');
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert('Registration successful! (Hook to backend here)');
+      }
+    });
+
+    function showError(id, message) {
+      const el = document.getElementById(id);
+      el.textContent = message;
+      el.style.display = 'block';
+     
+
+    }
+  </script>
+</body>
+</html>
