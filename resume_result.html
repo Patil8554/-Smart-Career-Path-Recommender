@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Analysis Result</title>
+</head>
+<body>
+    <h2> Extracted Skills:</h2>
+    <ul>
+        {% for skill in skills %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2></h2> Suggested Career:</h2>
+    <p><strong>{{ career }}</strong></p>
+
+    <a href="/dashboard">Back to Dashboard</a>
+</body>
+</html>
