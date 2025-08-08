@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <script>
+  let totalTime = 30 * 60; // 30 minutes = 1800 seconds
+
+  function startTimer() {
+    const timerDisplay = document.getElementById("timer");
+    const form = document.getElementById("careerTestForm");
+
+    const interval = setInterval(() => {
+      const minutes = Math.floor(totalTime / 60);
+      const seconds = totalTime % 60;
+      timerDisplay.textContent = `🕒 remaining time: ${minutes} minutes${seconds < 10 ? '0' : ''}${seconds} second`;
+
+      totalTime--;
+
+      if (totalTime < 0) {
+        clearInterval(interval);
+        alert("Time Close. Your test sumbmeted.");
+        form.submit();
+      }
+    }, 1000);
+  }
+
+  window.onload = startTimer;
+</script>
+
+  <meta charset="UTF-8">
+  <title>Career Test | Smart Career Path Recommender</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 20px;
+      color: #fff;
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    label {
+      margin-right: 15px;
+      display: inline-block;
+    }
+    button {
+      display: block;
+      margin: 30px auto 0;
+      padding: 10px 30px;
+      font-size: 18px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h3 id="timer" style="text-align:center; margin-bottom:20px;">🕒 Time Start...</h3>
+    <h2>💡 करिअर टेस्ट (Career Assessment Test)</h2>
+<form action="/submit_test" method="POST" id="careerTestForm">
+
+
+
+  <div class="question">
+    <p>1. तुम्हाला गणित आणि तांत्रिक समस्या सोडवायला आवडतात का? / Do you enjoy solving math and technical problems?</p>
+    <label><input type="radio" name="q1" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q1" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>2. तुमचं विश्लेषणात्मक विचार करण्याची पद्धत चांगली आहे का? / Are you good at analytical thinking?</p>
+    <label><input type="radio" name="q2" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q2" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>3. तुम्हाला प्रयोग करायला आवडतं का? / Do you enjoy doing experiments?</p>
+    <label><input type="radio" name="q3" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q3" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>4. तुम्हाला संगणक आणि टेक्नोलॉजीबद्दल रस आहे का? / Are you interested in computers and technology?</p>
+    <label><input type="radio" name="q4" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q4" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>5. तुम्हाला गोष्टी डिझाईन करायला आवडतात का? / Do you like designing things?</p>
+    <label><input type="radio" name="q5" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q5" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>6. तुमचं जीवशास्त्र/रसायनशास्त्र/भौतिकशास्त्रात चांगलं ज्ञान आहे का? / Are you good in biology/chemistry/physics?</p>
+    <label><input type="radio" name="q6" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q6" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>7. तुम्हाला लोकांची मदत करायला आवडते का? / Do you enjoy helping people?</p>
+    <label><input type="radio" name="q7" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q7" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>8. तुम्हाला वैद्यकीय क्षेत्रात रस आहे का? / Are you interested in medical field?</p>
+    <label><input type="radio" name="q8" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q8" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>9. तुमचं लक्ष तपशीलांवर असतं का? / Are you detail-oriented?</p>
+    <label><input type="radio" name="q9" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q9" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>10. तुमचं मन शांत आणि केंद्रित आहे का? / Are you calm and focused?</p>
+    <label><input type="radio" name="q10" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q10" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>11. तुम्हाला चित्रकला, संगीत किंवा अभिनय आवडतो का? / Do you like art, music, or acting?</p>
+    <label><input type="radio" name="q11" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q11" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>12. तुम्हाला नवनवीन कल्पना सुचतात का? / Do you come up with creative ideas?</p>
+    <label><input type="radio" name="q12" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q12" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>13. तुम्हाला रंगसंगती आणि सौंदर्यदृष्टीची जाण आहे का? / Do you have a sense of color and aesthetics?</p>
+    <label><input type="radio" name="q13" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q13" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>14. तुम्हाला स्टेजवर सादरीकरण आवडतं का? / Do you enjoy performing on stage?</p>
+    <label><input type="radio" name="q14" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q14" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>15. तुला व्यवहार (Business) करायला आवडतो का? / Do you like doing business?</p>
+    <label><input type="radio" name="q15" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q15" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>16. तुम्ही कल्पनाशक्तीने विचार करता का? / Do you think imaginatively?</p>
+    <label><input type="radio" name="q16" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q16" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>17. तुम्हाला लोकांसमोर बोलायला आवडतं का? / Do you like speaking in front of people?</p>
+    <label><input type="radio" name="q17" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q17" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>18. तुमचं स्पष्टीकरण देण्याची क्षमता चांगली आहे का? / Are you good at explaining things?</p>
+    <label><input type="radio" name="q18" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q18" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>19. तुम्हाला मुलांसोबत काम करायला आवडतं का? / Do you enjoy working with children?</p>
+    <label><input type="radio" name="q19" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q19" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>20. तुम्हाला शिकवायला आवडतं का? / Do you enjoy teaching?</p>
+    <label><input type="radio" name="q20" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q20" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>21. तुमचं संयम आणि सहनशीलता चांगली आहे का? / Are you patient and tolerant?</p>
+    <label><input type="radio" name="q21" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q21" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>22. तुम्हाला डेटा विश्लेषण आणि ट्रेंड समजायला आवडतो का? / Do you like analyzing data and trends?</p>
+    <label><input type="radio" name="q22" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q22" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>23. तुम्ही गणित/तांत्रिक सॉफ्टवेअरसह सहज काम करता का? / Are you comfortable with technical software?</p>
+    <label><input type="radio" name="q23" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q23" value="no"> नाही / No</label>
+  </div>
+
+  <div class="question">
+    <p>24. तुम्ही समस्या वेगवेगळ्या कोनातून विचार करता का? / Do you approach problems from different angles?</p>
+    <label><input type="radio" name="q24" value="yes" required> होय / Yes</label>
+    <label><input type="radio" name="q24" value="no"> नाही / No</label>
+  </div>
+
+
+
+
+
+     <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
