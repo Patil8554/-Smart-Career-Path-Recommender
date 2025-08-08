@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Interactive Page</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: #0f2027;
+      background-image: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      z-index: -1;
+    }
+
+    .overlay {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+   
+  .start-test-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #28a745; /* Green */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .start-test-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+  }
+
+  .start-test-btn:active {
+    background-color: #1e7e34;
+    transform: scale(0.98);
+  }
+
+
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #1e90ff;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #63b3ed;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- Particle background -->
+<div id="particles-js"></div>
+
+<!-- Main content -->
+<div class="overlay">
+  <h1>Welcome to Smart Career App</h1>
+  <div class="button-container">
+    <a href="/test" class="start-test-btn">📝 Start Career Test</a>
+
+    <label for="resumeUpload">   
+   </label>
+   
+    <input type="file" id="resumeUpload" accept=".pdf,.doc,.docx" style="display: none;" onchange="uploadResume()">
+<button onclick="document.getElementById('resumeUpload').click()">upload resume</button>
+
+    <button onclick="viewReports()">View Past Reports</button>
+
+
+  </div>
+</div>
+
+<!-- Particle.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS("particles-js", {
+    "particles": {
+      "number": {
+        "value": 80
+      },
+      "color": {
+        "value": "#ffffff"
+      },
+      "shape": {
+        "type": "circle"
+      },
+      "opacity": {
+        "value": 0.5
+      },
+      "size": {
+        "value": 3
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#ffffff",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 3
+      }
+    },
+    "interactivity": {
+      "events": {
+        "onhover": {
+          "enable": true,
+          "mode": "grab"
+        }
+      }
+    }
+  });
+
+ 
+  
+      function uploadResume() {
+    const fileInput = document.getElementById('resumeUpload');
+    const file = fileInput.files[0];
+
+    if (!file) {
+      alert("Please select a file first..");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('resume', file);
+
+    fetch('/upload_resume', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+
+      // it is done then show pop up msg
+      document.body.insertAdjacentHTML('beforeend', `
+        <div style="position: fixed; bottom: 20px; left: 20px; background: #fff; padding: 20px; border-radius: 10px; color: black; z-index: 1000;">
+          ${data}
+        </div>`);
+    })
+    .catch(error => {
+      alert("Upload fail. Try again.");
+      console.error(error);
+    });
+  } 
+
+ function viewReports() {
+  alert("Fetching past reports...");
+  window.location.href = "/reports";
+}
+
+  
+</script>
+
+
