@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Reports</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #2c3e50, #4ca1af);
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+    }
+
+    .report-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 700px;
+      text-align: left;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .report-card h2 {
+      color: #f9d342;
+      margin-bottom: 10px;
+    }
+
+    .report-card p, .report-card li {
+      font-size: 16px;
+      color: #e0e0e0;
+    }
+
+    a.back-btn {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #1abc9c;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    a.back-btn:hover {
+      background-color: #16a085;
+    }
+    .roadmap-btn {
+  padding: 12px 28px;
+  background: linear-gradient(45deg, #ff6f61, #ffcc00);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.roadmap-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.9);
+}
+
+.roadmap-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75px;
+  width: 50px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: skewX(-20deg);
+}
+
+.roadmap-btn:hover::after {
+  animation: shine 0.8s forwards;
+}
+
+@keyframes shine {
+  0% { left: -75px; }
+  100% { left: 125%; }
+}
+
+  </style>
+</head>
+<body>
+  <h1>📊 Career Test Report</h1>
+  
+
+  {% if result %}
+  <div class="report-card">
+    <h2>User Info</h2>
+    <p><strong>Username/IP:</strong> {{ result.username }}</p>
+    <p><strong>Submitted On:</strong> {{ result.submitted_at }}</p>
+  </div>
+
+  <div class="report-card">
+    <h2>Test Responses</h2>
+    <ul>
+      {% for i in range(1, 25) %}
+        <li><strong>Q{{ i }}:</strong> {{ result['q' ~ i] }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+ 
+  {% else %}
+    <div class="report-card">
+      <h2>No Report Found</h2>
+      <p>It looks like you havent taken the test yet.</p>
+    </div>
+  {% endif %}
+
+<div class="report-card">
+  <h2>Test Performance</h2>
+  <p><strong>Career Suggestion:</strong> {{ result.career_prediction }}</p>
+
+  {% if result and result.career_prediction %}
+    <button class="roadmap-btn" onclick="goToRoadmap()"> Roadmap</button>
+  {% endif %}
+</div>
+
+
+
+
+  <a href="/" class="back-btn">🏠 Go To Home Page</a>
+<script>
+function goToRoadmap() {
+  const career = "{{ result.career_prediction | urlencode | safe }}";
+  window.location.href = "/roadmap?career=" + career;
+}
+</script>
+
+
+ </body>
+</html>
