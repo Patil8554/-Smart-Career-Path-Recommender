@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Career Roadmap</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background-color: rgba(0,0,0,0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+      color: #00ffcc;
+    }
+
+    .section {
+      margin-bottom: 25px;
+    }
+
+    .section h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: #ffd700;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a.link {
+      color: #00ffcc;
+      text-decoration: none;
+    }
+
+    a.link:hover {
+      text-decoration: underline;
+    }
+
+    .back-btn {
+      margin-top: 30px;
+      display: inline-block;
+      background: #28a745;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 id="careerTitle">Career Roadmap</h1>
+
+    <div id="roadmapContent">
+      <!-- Dynamic content inserted here -->
+    </div>
+
+    <a href="/test" class="back-btn">🔁 Take Another Test</a>
+  </div>
+
+  <script>
+const roadmaps = {
+  "Engineer": {
+    skills: [
+      { name: "C++", link: "https://www.w3schools.com/cpp/" },
+      { name: "Java", link: "https://www.w3schools.com/java/" },
+      { name: "Python", link: "https://www.w3schools.com/python/" },
+      { name: "Data Structures & Algorithms", link: "https://www.w3schools.com/dsa/" },
+      { name: "Git, GitHub, VS Code", link: "https://www.w3schools.com/git/" },
+      { name: "Web or App Development", link: "https://www.w3schools.com/html/" }
+    ],
+    courses: [
+      { name: "CS50 by Harvard", link: "https://cs50.harvard.edu/x/" },
+      { name: "Udemy: Mastering DSA", link: "https://www.udemy.com/course/datastructurescncpp/" },
+      { name: "FreeCodeCamp Full Stack", link: "https://www.freecodecamp.org/learn" }
+    ],
+    internships: [
+      { name: "Backend Intern - SaaS company", link: "https://www.linkedin.com/jobs/backend-intern-jobs" },
+      { name: "Frontend Dev - Startup", link: "https://www.linkedin.com/jobs/frontend-developer-intern-jobs" }
+    ],
+    jobs: [
+      { name: "Frontend Developer", link: "https://www.linkedin.com/jobs/frontend-developer-jobs" },
+      { name: "Backend Engineer", link: "https://www.linkedin.com/jobs/backend-engineer-jobs" },
+      { name: "Full Stack Developer", link: "https://www.linkedin.com/jobs/full-stack-developer-jobs" }
+    ],
+    
+  },
+
+  "Teacher": {
+    skills: [
+      { name: "Lesson Planning", link: "https://www.coursera.org/learn/lesson-planning" },
+      { name: "Classroom Management", link: "https://www.edutopia.org/classroom-management" },
+      { name: "Communication Skills", link: "https://www.coursera.org/learn/communication-skills" },
+      { name: "Assessment & Evaluation", link: "https://www.coursera.org/learn/assessment-for-learning" },
+      { name: "Subject Expertise", link: "https://www.khanacademy.org/" },
+      { name: "Educational Technology", link: "https://www.coursera.org/learn/learning-technologies" }
+    ],
+    courses: [
+      { name: "Coursera: Foundations of Teaching", link: "https://www.coursera.org/specializations/foundations-of-teaching" },
+      { name: "Udemy: Classroom Management Essentials", link: "https://www.udemy.com/course/classroom-management-essentials/" },
+      { name: "edX: Teaching Strategies", link: "https://www.edx.org/course/teaching-strategies" }
+    ],
+    internships: [
+      { name: "Teaching Assistant - School", link: "https://www.linkedin.com/jobs/teaching-assistant-jobs" },
+      { name: "Online Tutoring Intern", link: "https://www.linkedin.com/jobs/online-tutor-jobs" }
+    ],
+    jobs: [
+      { name: "School Teacher", link: "https://www.linkedin.com/jobs/school-teacher-jobs" },
+      { name: "College Lecturer", link: "https://www.linkedin.com/jobs/lecturer-jobs" },
+      { name: "Private Tutor", link: "https://www.linkedin.com/jobs/private-tutor-jobs" }
+    ],
+    
+  },
+
+  "Lawyer": {
+    skills: [
+      { name: "Legal Research", link: "https://www.coursera.org/learn/legal-research" },
+      { name: "Contract Drafting", link: "https://www.udemy.com/course/contract-drafting/" },
+      { name: "Public Speaking", link: "https://www.coursera.org/learn/public-speaking" },
+      { name: "Negotiation", link: "https://www.coursera.org/learn/negotiation" },
+      { name: "Critical Thinking", link: "https://www.coursera.org/learn/critical-thinking-skills" },
+      { name: "Case Analysis", link: "https://www.edx.org/course/legal-analysis" }
+    ],
+    courses: [
+      { name: "Harvard: Introduction to American Law", link: "https://pll.harvard.edu/course/introduction-american-law" },
+      { name: "Udemy: Law for Beginners", link: "https://www.udemy.com/course/law-for-beginners/" },
+      { name: "Coursera: International Law", link: "https://www.coursera.org/learn/international-law" }
+    ],
+    internships: [
+      { name: "Law Firm Intern", link: "https://www.linkedin.com/jobs/law-intern-jobs" },
+      { name: "Court Clerk Intern", link: "https://www.linkedin.com/jobs/court-clerk-jobs" }
+    ],
+    jobs: [
+      { name: "Corporate Lawyer", link: "https://www.linkedin.com/jobs/corporate-lawyer-jobs" },
+      { name: "Criminal Lawyer", link: "https://www.linkedin.com/jobs/criminal-lawyer-jobs" },
+      { name: "Legal Advisor", link: "https://www.linkedin.com/jobs/legal-advisor-jobs" }
+    ],
+    
+  },
+  "Artist": {
+  skills: [
+    { name: "Drawing & Illustration", link: "https://www.skillshare.com/en/browse/drawing" },
+    { name: "Digital Art (Photoshop, Procreate)", link: "https://www.adobe.com/products/photoshop.html" },
+    { name: "Color Theory", link: "https://www.coursera.org/learn/color-theory" },
+    { name: "Art History", link: "https://www.khanacademy.org/humanities/art-history" },
+    { name: "3D Modeling", link: "https://www.blender.org/" },
+    { name: "Portfolio Development", link: "https://www.skillshare.com/en/browse/portfolio" }
+  ],
+  courses: [
+    { name: "Udemy: Character Art School", link: "https://www.udemy.com/course/character-art-school-complete-character-drawing/" },
+    { name: "Coursera: Modern Art & Ideas", link: "https://www.coursera.org/learn/modern-art-ideas" },
+    { name: "Skillshare: Digital Illustration", link: "https://www.skillshare.com/en/browse/digital-illustration" }
+  ],
+  internships: [
+    { name: "Art Studio Assistant", link: "https://www.linkedin.com/jobs/art-studio-assistant-jobs" },
+    { name: "Graphic Design Intern", link: "https://www.linkedin.com/jobs/graphic-design-intern-jobs" }
+  ],
+  jobs: [
+    { name: "Illustrator", link: "https://www.linkedin.com/jobs/illustrator-jobs" },
+    { name: "Concept Artist", link: "https://www.linkedin.com/jobs/concept-artist-jobs" },
+    { name: "Graphic Designer", link: "https://www.linkedin.com/jobs/graphic-designer-jobs" }
+  ],
+  careerImage: "images/careers/artist.jpg"       // Add an image for the artist career
+},
+
+"Doctor": {
+  skills: [
+    { name: "Medical Diagnosis", link: "https://www.coursera.org/learn/clinical-problem-solving" },
+    { name: "Surgical Skills", link: "https://www.futurelearn.com/courses/introduction-to-surgery" },
+    { name: "Patient Communication", link: "https://www.coursera.org/learn/communication-in-healthcare" },
+    { name: "Emergency Care", link: "https://www.coursera.org/learn/emergency-care" },
+    { name: "Anatomy & Physiology", link: "https://www.khanacademy.org/science/health-and-medicine" },
+    { name: "Medical Research", link: "https://www.coursera.org/learn/clinical-research" }
+  ],
+  courses: [
+    { name: "Harvard: HMX Fundamentals", link: "https://onlinelearning.hms.harvard.edu/hmx" },
+    { name: "Coursera: Clinical Problem Solving", link: "https://www.coursera.org/learn/clinical-problem-solving" },
+    { name: "Udemy: Anatomy & Physiology", link: "https://www.udemy.com/course/anatomy-and-physiology/" }
+  ],
+  internships: [
+    { name: "Medical Intern - Hospital", link: "https://www.linkedin.com/jobs/medical-intern-jobs" },
+    { name: "Research Assistant - Medical Field", link: "https://www.linkedin.com/jobs/medical-research-assistant-jobs" }
+  ],
+  jobs: [
+    { name: "General Physician", link: "https://www.linkedin.com/jobs/general-physician-jobs" },
+    { name: "Surgeon", link: "https://www.linkedin.com/jobs/surgeon-jobs" },
+    { name: "Pediatrician", link: "https://www.linkedin.com/jobs/pediatrician-jobs" }
+  ],
+  careerImage: "images/careers/doctor.jpg"
+},
+
+};
+
+
+
+
+const urlParams = new URLSearchParams(window.location.search);
+  const career = urlParams.get('career');
+
+  const title = document.getElementById('careerTitle');
+  const content = document.getElementById('roadmapContent');
+
+  if (career && roadmaps[career]) {
+    title.innerText = career + " Roadmap";
+    const roadmap = roadmaps[career];
+
+    const createList = (items) => {
+      return `<ul>${items.map(item =>
+        `<li><a class="link" href="${item.link}" target="_blank">${item.name}</a></li>`
+      ).join('')}</ul>`;
+    };
+
+    content.innerHTML = `
+      <div class="section">
+        <h2>🛠️ Skills to Master</h2>
+        ${createList(roadmap.skills)}
+      </div>
+      <div class="section">
+        <h2>📚 Recommended Courses</h2>
+        ${createList(roadmap.courses)}
+      </div>
+      <div class="section">
+        <h2>🧪 Internship Suggestions</h2>
+        ${createList(roadmap.internships)}
+      </div>
+      <div class="section">
+        <h2>💼 Entry-Level Job Roles</h2>
+        ${createList(roadmap.jobs)}
+      </div>
+    `;
+  } else {
+    title.innerText = "Career Not Found";
+    content.innerHTML = `<p>We couldn't find a roadmap for the selected career.</p>`;
+  }
+  </script>
+
+</body>
+</html>
