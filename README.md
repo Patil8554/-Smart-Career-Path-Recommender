@@ -14,13 +14,55 @@
 
 ---
 
-## 🛠 Tech Stack
-- **Frontend:** HTML, CSS, Bootstrap  
-- **Backend:** Python (Flask)  
-- **Database:** MySQL  
-- **Machine Learning:** Scikit-learn, Pandas, NumPy, XGBoost  
-- **Visualization:** Power BI  
+🔹 Frontend
 
+HTML5, CSS3, Bootstrap – For user interface (login, dashboard, test pages)
+
+🔹 Backend
+
+Python (Flask) – Web framework
+
+Flask-CORS – Cross-origin resource sharing
+
+Werkzeug – Secure file handling
+
+🔹 Database
+
+MySQL – For storing user details, test results, and predictions
+
+mysql-connector-python – To connect Flask with MySQL
+
+🔹 Machine Learning
+
+Scikit-learn – Model training & evaluation
+
+XGBoost – Advanced model for predictions
+
+Pandas & NumPy – Data handling & preprocessing
+
+Pickle / Joblib – Model serialization (model.pkl, encoder.pkl)
+
+🔹 Natural Language Processing (NLP)
+
+spaCy – Resume text processing & skill extraction
+
+PyPDF2 – Extract text from PDF resumes
+
+docx2txt – Extract text from DOCX resumes
+
+🔹 Utilities
+
+Hashlib – Password hashing (security)
+
+Datetime – Handling timestamps
+
+OS – File & path handling
+
+JSON – Skill-to-career mapping
+
+🔹 Visualization
+
+Power BI – Career trend dashboards & analytics
 ---
 
 ## 📂 Project Structure
