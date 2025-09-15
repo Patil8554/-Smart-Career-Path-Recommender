@@ -22,7 +22,7 @@ with open('career_mapping.json', 'r') as f:
 all_skills = list({skill.lower() for skills in career_mapping.values() for skill in skills})
 
 
-# Resume text extraction functions using nlp
+# Resume text extraction functions using NLP
 
 def extract_text_from_pdf(path):
     text = ""
@@ -368,3 +368,4 @@ def roadmap():
 if __name__ == '__main__':
     app.run(debug=True)
     
+
